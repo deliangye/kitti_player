@@ -641,7 +641,7 @@ int main(int argc, char **argv)
     if (!(options.all_data || options.color || options.gps || options.grayscale || options.imu || options.velodyne))
     {
         ROS_WARN_STREAM("Job finished without playing the dataset. No 'publishing' parameters provided");
-        node.shutdown();
+        //node.shutdown();
         return 1;
     }
 
@@ -706,7 +706,7 @@ int main(int argc, char **argv)
     )
     {
         ROS_ERROR("Incorrect tree directory , use --help for details");
-        node.shutdown();
+        //node.shutdown();
         return -1;
     }
     else
@@ -829,7 +829,7 @@ int main(int argc, char **argv)
     if (options.startFrame > total_entries)
     {
         ROS_ERROR("Error, start number > total entries in the dataset");
-        node.shutdown();
+        //node.shutdown();
         return -1;
     }
     else
@@ -906,7 +906,7 @@ int main(int argc, char **argv)
         )
         {
             ROS_ERROR_STREAM("Error reading CAMERA02/CAMERA03 calibration");
-            node.shutdown();
+            //node.shutdown();
             return -1;
         }
         //Assume same height/width for the camera pair
@@ -925,7 +925,7 @@ int main(int argc, char **argv)
         )
         {
             ROS_ERROR_STREAM("Error reading CAMERA00/CAMERA01 calibration");
-            node.shutdown();
+            //node.shutdown();
             return -1;
         }
         //Assume same height/width for the camera pair
@@ -1023,7 +1023,7 @@ int main(int argc, char **argv)
             {
                 ROS_ERROR_STREAM("Error reading color images (02 & 03)");
                 ROS_ERROR_STREAM(full_filename_image02 << endl << full_filename_image03);
-                node.shutdown();
+                //node.shutdown();
                 return -1;
             }
 
@@ -1052,7 +1052,7 @@ int main(int argc, char **argv)
                 {
                     //ROS_ERROR_STREAM("Fail to open " << timestamps);
                     ROS_ERROR_STREAM("Fail to open " << str_support.c_str());
-                    node.shutdown();
+                    //node.shutdown();
                     return -1;
                 }
                 timestamps.seekg(30 * entries_played);
@@ -1077,7 +1077,7 @@ int main(int argc, char **argv)
                 {
                     //ROS_ERROR_STREAM("Fail to open " << timestamps);
                     ROS_ERROR_STREAM("Fail to open " << str_support.c_str());
-                    node.shutdown();
+                    //node.shutdown();
                     return -1;
                 }
                 timestamps.seekg(30 * entries_played);
@@ -1107,7 +1107,7 @@ int main(int argc, char **argv)
             {
                 ROS_ERROR_STREAM("Error reading color images (00 & 01)");
                 ROS_ERROR_STREAM(full_filename_image00 << endl << full_filename_image01);
-                node.shutdown();
+                //node.shutdown();
                 return -1;
             }
 
@@ -1136,7 +1136,7 @@ int main(int argc, char **argv)
                 {
                     //ROS_ERROR_STREAM("Fail to open " << timestamps);
                     ROS_ERROR_STREAM("Fail to open " << str_support.c_str());
-                    node.shutdown();
+                    //node.shutdown();
                     return -1;
                 }
                 timestamps.seekg(30 * entries_played);
@@ -1161,7 +1161,7 @@ int main(int argc, char **argv)
                 {
                     //ROS_ERROR_STREAM("Fail to open " << timestamps);
                     ROS_ERROR_STREAM("Fail to open " << str_support.c_str());
-                    node.shutdown();
+                    //node.shutdown();
                     return -1;
                 }
                 timestamps.seekg(30 * entries_played);
@@ -1192,7 +1192,7 @@ int main(int argc, char **argv)
                 {
                     //ROS_ERROR_STREAM("Fail to open " << timestamps);
                     ROS_ERROR_STREAM("Fail to open " << str_support.c_str());
-                    node.shutdown();
+                    //node.shutdown();
                     return -1;
                 }
                 timestamps.seekg(30 * entries_played);
@@ -1215,7 +1215,7 @@ int main(int argc, char **argv)
                 {
                     //ROS_ERROR_STREAM("Fail to open " << timestamps);
                     ROS_ERROR_STREAM("Fail to open " << str_support.c_str());
-                    node.shutdown();
+                    //node.shutdown();
                     return -1;
                 }
                 timestamps.seekg(30 * entries_played);
@@ -1227,7 +1227,7 @@ int main(int argc, char **argv)
             if (!getGPS(full_filename_oxts, &ros_msgGpsFix, &header_support))
             {
                 ROS_ERROR_STREAM("Fail to open " << full_filename_oxts);
-                node.shutdown();
+                //node.shutdown();
                 return -1;
             }
 
@@ -1241,7 +1241,7 @@ int main(int argc, char **argv)
                 if (!getGPS(full_filename_oxts, &ros_msgGpsFix, &header_support))
                 {
                     ROS_ERROR_STREAM("Fail to open " << full_filename_oxts);
-                    node.shutdown();
+                    //node.shutdown();
                     return -1;
                 }
                 ROS_DEBUG_STREAM("Setting initial GPS fix at " << endl << ros_msgGpsFix);
@@ -1304,7 +1304,7 @@ int main(int argc, char **argv)
                 {
                     //ROS_ERROR_STREAM("Fail to open " << timestamps);
                     ROS_ERROR_STREAM("Fail to open " << str_support.c_str());
-                    node.shutdown();
+                    //node.shutdown();
                     return -1;
                 }
                 timestamps.seekg(30 * entries_played);
@@ -1317,7 +1317,7 @@ int main(int argc, char **argv)
             if (!getIMU(full_filename_oxts, &ros_msgImu, &header_support))
             {
                 ROS_ERROR_STREAM("Fail to open " << full_filename_oxts);
-                node.shutdown();
+                //node.shutdown();
                 return -1;
             }
             imu_pub.publish(ros_msgImu);
@@ -1347,7 +1347,7 @@ int main(int argc, char **argv)
 
 
     ROS_INFO_STREAM("Done!");
-    node.shutdown();
+    //node.shutdown();
 
     return 0;
 }

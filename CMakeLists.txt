@@ -18,15 +18,13 @@ find_package(catkin REQUIRED COMPONENTS
 find_package(PCL REQUIRED)
 find_package(Boost REQUIRED COMPONENTS thread system program_options)
 
-
 generate_dynamic_reconfigure_options(cfg/kitti_player.cfg)
 catkin_package(CATKIN_DEPENDS dynamic_reconfigure)
 
 include_directories(
-		${}
-  		${catkin_INCLUDE_DIRS} 
-  		${PCL_INCLUDE_DIRS}
-                ${Boost_INCLUDE_DIRS}
+  ${catkin_INCLUDE_DIRS} 
+  ${PCL_INCLUDE_DIRS}
+  ${Boost_INCLUDE_DIRS}
 )
 
 link_directories(${PCL_LIBRARY_DIRS})
